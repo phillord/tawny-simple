@@ -64,7 +64,10 @@
 ;; However, reasoning shows that `B` can be infered to be a subclass of `A`
 (r/isubclasses A)
 
-
+;; This is not specific to the `some` restriction. It is also possible to use
+;; `only`; in this case, there does not have to be an instance of anything
+;; related to `D` by `r`, but if there is, then it must be an instance of `D`.
+;; The definition of `C` is the same but *defined* or equivalent.
 (defclass D
   :subclass (only r X))
 
@@ -73,6 +76,9 @@
 
 (subclasses C)
 (r/isubclasses C)
+
+;; and finally, we use `hasvalue` which relates the class to a specific
+;; individual (rather than another class).
 
 (defindividual i)
 

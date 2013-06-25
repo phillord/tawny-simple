@@ -26,9 +26,17 @@
                      'simple.equiv :hermit))
 
 (deftest asserted
-  (is (not (seq (subclasses A)))))
+  (is (not (seq (subclasses A))))
+  (is (not (seq (subclasses C))))
+  (is (not (seq (subclasses E)))))
 
 (deftest inferred
   (is
    (= #{B}
-      (r/isubclasses A))))
+      (r/isubclasses A)))
+  (is
+   (= #{D}
+      (r/isubclasses C)))
+  (is
+   (= #{F}
+      (r/isubclasses E))))
