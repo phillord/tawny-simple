@@ -25,3 +25,10 @@
 (use-fixtures :once (tawny.fixture/namespace-and-reasoner
                      'simple.equiv :hermit))
 
+(deftest asserted
+  (is (not (seq (subclasses A)))))
+
+(deftest inferred
+  (is
+   (= #{B}
+      (r/isubclasses A))))

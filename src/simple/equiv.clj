@@ -26,8 +26,11 @@
 
 ;; ## Preamble
 ;;
-;; Define the reasoner factory and the ontology.
+;; Define the reasoner factory and the ontology. Shut the reasoner up, or it
+;; will open a GUI.
 (r/reasoner-factory :hermit)
+(r/reasoner-silent)
+
 (defontology equiv)
 
 ;; ## Supporting classes
