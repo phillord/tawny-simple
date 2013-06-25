@@ -63,3 +63,24 @@
 
 ;; However, reasoning shows that `B` can be infered to be a subclass of `A`
 (r/isubclasses A)
+
+
+(defclass D
+  :subclass (only r X))
+
+(defclass C
+  :equivalent (only r X))
+
+(subclasses C)
+(r/isubclasses C)
+
+(defindividual i)
+
+(defclass F
+  :subclass (hasvalue r i))
+
+(defclass E
+  :equivalent (hasvalue r i))
+
+(subclasses E)
+(r/isubclasses E)
