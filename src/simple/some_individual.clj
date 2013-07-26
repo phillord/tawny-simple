@@ -83,5 +83,5 @@
 
 ;; ## See also
 ;;
-;; See [only_individual](#simple.only_individual) for inferences that can be
+;; See [only-individual](#simple.only-individual) for inferences that can be
 ;; made as a result of `only` statements.
