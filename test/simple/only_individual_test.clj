@@ -15,28 +15,21 @@
 ;; You should have received a copy of the GNU Lesser General Public License
 ;; along with this program. If not, see http://www.gnu.org/licenses/.
 
-(ns simple.equiv-test
+(ns simple.only-individual-test
   (:use [clojure.test])
   (:use [tawny.owl])
-  (:use [simple.equiv])
-  (:require [tawny.fixture])
-  (:require [tawny.reasoner :as r]))
+  (:require [simple.only-individual :as o])
+  (:require [tawny.reasoner :as r])
+  (:require (tawny.fixture)))
+
 
 (use-fixtures :once (tawny.fixture/namespace-and-reasoner
-                     'simple.equiv :hermit))
+                     'simple.only-individual :hermit))
 
-(deftest asserted
-  (is (not (seq (subclasses equiv A))))
-  (is (not (seq (subclasses equiv C))))
-  (is (not (seq (subclasses equiv E)))))
+(deftest A
+  (= #{o/k}
+     (r/instances o/A)))
 
-(deftest inferred
-  (is
-   (= #{B}
-      (r/isubclasses equiv A)))
-  (is
-   (= #{D}
-      (r/isubclasses equiv C)))
-  (is
-   (= #{F}
-      (r/isubclasses equiv E))))
+(deftest X
+  (= #{o/i}
+     (r/instances o/X)))

@@ -14,29 +14,19 @@
 ;;
 ;; You should have received a copy of the GNU Lesser General Public License
 ;; along with this program. If not, see http://www.gnu.org/licenses/.
-
-(ns simple.equiv-test
+(ns simple.range-test
   (:use [clojure.test])
   (:use [tawny.owl])
-  (:use [simple.equiv])
-  (:require [tawny.fixture])
-  (:require [tawny.reasoner :as r]))
+  (:require [tawny.reasoner :as r])
+  (:require [simple.range :as rn]))
 
 (use-fixtures :once (tawny.fixture/namespace-and-reasoner
-                     'simple.equiv :hermit))
+                     'simple.range :hermit))
 
-(deftest asserted
-  (is (not (seq (subclasses equiv A))))
-  (is (not (seq (subclasses equiv C))))
-  (is (not (seq (subclasses equiv E)))))
+(deftest X
+  (is (= #{rn/i}
+         (r/instances rn/X))))
 
-(deftest inferred
-  (is
-   (= #{B}
-      (r/isubclasses equiv A)))
-  (is
-   (= #{D}
-      (r/isubclasses equiv C)))
-  (is
-   (= #{F}
-      (r/isubclasses equiv E))))
+(deftest A
+  (is (= #{}
+         (r/isuperclasses rn/A))))
